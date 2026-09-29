@@ -233,15 +233,17 @@ Edit `index.html` directly — CSS is in the top `<style>` block, JS is at the b
 
 ## 12. Deployment
 
-Deploy from the project directory with Wrangler:
+Deploy from the project directory with the script (PowerShell):
 
-```bash
-wrangler pages deploy . --project-name=technotouchinterio --commit-dirty=true
+```powershell
+.\deploy.ps1
 ```
+
+`deploy.ps1` copies only the public files (pages, CSS/JS, icons, logos, `assets/`, sitemap, robots) into `.deploy\` and uploads that folder. **Don't run `wrangler pages deploy .`** — this folder also holds private files (app plan and cost PDFs, this README, homepage backups, raw video) that would become public. When you add a new page or image, it's picked up automatically if it's an `.html`/`.css`/`.js` file or inside `assets/`; any other new root-level file must be added to the `$static` list in `deploy.ps1`. Use `.\deploy.ps1 -PrepareOnly` to check what would go live.
 
 Requirements:
 - `wrangler` installed (`npm i -g wrangler`)
-- Logged in to Cloudflare (`wrangler login`) on the account that owns the `technotouchinterio` Pages project
+- Logged in to Cloudflare (`wrangler login`) on the account that owns the `technotouchinterio` Pages project (the account email is recorded in the private admin-panel docs, `technotouch-app/PROJECT_PLAN.md` § 7 — it's kept out of this public repo).
 
 Typical flow:
 
@@ -341,6 +343,18 @@ Shared reel assets pulled from **this** website:
 | Service areas | Mumbai, Thane, Bhiwandi, Navi Mumbai and surrounding Maharashtra |
 | Services | Interior design & space planning · Turnkey execution · Residential interiors · Retail & commercial interiors · MEP solutions · Custom furniture & modular |
 
+## 17. Related Projects
+
+This website is one of three TechnoTouch deliverables:
+
+| Deliverable | Location |
+|---|---|
+| Public website (this project) | `C:\Arham\WebProjects\TechnoTouchInterrio\TechnoTouchInterior\` |
+| Admin panel (team CRM, reports, Excel export) | `C:\Arham\AndroidProjects\technotouch-app\` → `/admin` |
+| Client app (installable PWA for clients) | `C:\Arham\AndroidProjects\technotouch-app\` → `/dashboard` |
+
+Full documentation for the admin panel and client app: `C:\Arham\AndroidProjects\technotouch-app\PROJECT_PLAN.md`.
+
 ---
 
-*Last updated: 2026-07-27*
+*Last updated: 2026-09-29*

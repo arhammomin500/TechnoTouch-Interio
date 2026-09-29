@@ -1,2 +1,7 @@
 # Local Netlify folder
 .netlify
+.deploy/
+
+# Internal app documents - keep out of this public repo
+TechnoTouch-App-*.pdf
+TechnoTouch-Client-App-Plan.pdf
